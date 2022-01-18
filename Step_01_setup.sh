@@ -1,10 +1,12 @@
-# start an interactive session and wait to be logged in to a compute node
+# You'll be copying and pasting this script into the command line. So...
+# Start an interactive session and wait to be logged in to a computer node
+
 interactive -c 1 -p quanah
 
-# move to your working directory for the project
+# Move to your working directory for the project.
 cd /lustre/scratch/arrice/WBNU_project_round2
 
-# make directories for organization during analyses
+# Make directories for organization during analyses (copy and paste the following lines)
 mkdir 00_fastq
 mkdir 01_cleaned
 mkdir 01_bam_files
@@ -17,15 +19,21 @@ mkdir 10_align_script
 mkdir 12_filter_scripts
 mkdir 13_convert_scripts
 
-#####################################
-#####################################
-#####################################
-##### transfer your raw data files for this project to the directory 00_fastq
-#####################################
-#####################################
-#####################################
+# Now transfer your raw data files for this project to the directory 00_fastq
 
-mv /wherever_the_files_are/*gz /lustre/scratch/arrice/WBNU_project_round2/00_fastq
+cp /wherever_the_files_are/*.gz /lustre/scratch/arrice/WBNU_project_round2/00_fastq
+
+#I use the cp command and not mv because I don't want to delete the files from their original locations. 
+#Also, this might take a few minutes because these are very big files. 
+#You can check filezilla or open another terminal window to see the files being copied. 
+
+#
+
+
+
+
+
+
 
 
 
