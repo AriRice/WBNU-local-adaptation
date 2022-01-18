@@ -58,12 +58,48 @@ cd Concatenate
 #Now put a prefix in all files in this folder so you know they're the originals. 
  for I in $(ls); do mv ${I} Original_${I};done
  
-#Now you will concatenate files, one at a time
+#Now you will concatenate files, one at a time. What a pain. 
+cat Original_29802_S20_Pinal_R1.fastq.gz Original_29802_S77_L002_R1_001.fastq.gz > 29802_S20_Pinal_R1.fastq.gz
+cat Original_29804_S17_Pinal_R1.fastq.gz Original_29804_S76_L002_R1_001.fastq.gz > 29804_S17_Pinal_R1.fastq.gz
+cat Original_29807_S16_Pinal_R1.fastq.gz Original_29807_S75_L002_R1_001.fastq.gz > 29807_S16_Pinal_R1.fastq.gz
+cat Original_29810_S21_Huachuca_R1.fastq.gz Original_29810_S78_L002_R1_001.fastq.gz > 29810_S21_Huachuca_R1.fastq.gz
+cat Original_30946_S1_Coconino_R1.fastq.gz Original_30946_S65_L002_R1_001.fastq.gz > 30946_S1_Coconino_R1.fastq.gz
+cat Original_30948_S14_Pinalenos_R1.fastq.gz Original_30948_S74_L002_R1_001.fastq.gz > 30948_S14_Pinalenos_R1.fastq.gz
+cat Original_30951_S2_Coconino_R1.fastq.gz Original_30951_S66_L002_R1_001.fastq.gz > 30951_S2_Coconino_R1.fastq.gz
+cat Original_30952_S26_Coconino_R1.fastq.gz Original_30952_S83_L002_R1_001.fastq.gz > 30952_S26_Coconino_R1.fastq.gz
+cat Original_30957_S23_SantaRita_R1.fastq.gz Original_30957_S80_L002_R1_001.fastq.gz > 30957_S23_SantaRita_R1.fastq.gz
+cat Original_30958_S24_SantaRita_R1.fastq.gz Original_30958_S81_L002_R1_001.fastq.gz > 30958_S24_SantaRita_R1.fastq.gz
+cat Original_31308_S25_SantaRita_R1.fastq.gz Original_31308_S82_L002_R1_001.fastq.gz > 31308_S25_SantaRita_R1.fastq.gz
+cat Original_31310_S22_Prescott_R1.fastq.gz Original_31310_S79_L002_R1_001.fastq.gz > 31310_S22_Prescott_R1.fastq.gz
+cat Original_31311_S3_Apache_R1.fastq.gz Original_31311_S67_L002_R1_001.fastq.gz > 31311_S3_Apache_R1.fastq.gz
+cat Original_31313_S4_Chiricahua_R1.fastq.gz Original_31313_S68_L002_R1_001.fastq.gz > 31313_S4_Chiricahua_R1.fastq.gz
+cat Original_31315_S5_Apache_R1.fastq.gz Original_31315_S69_L002_R1_001.fastq.gz > 31315_S5_Apache_R1.fastq.gz
+cat Original_31316_S6_SantaCatalina_R1.fastq.gz Original_31316_S70_L002_R1_001.fastq.gz > 31316_S6_SantaCatalina_R1.fastq.gz
+cat Original_31406_S71_L002_R1_001.fastq.gz Original_31406_S7_SantaCatalina_R1.fastq.gz > 31406_S7_SantaCatalina_R1.fastq.gz
+cat Original_31410_S72_L002_R1_001.fastq.gz Original_31410_S8_Chiricahua_R1.fastq.gz > 31410_S8_Chiricahua_R1.fastq.gz
+cat Original_31415_S73_L002_R1_001.fastq.gz Original_31415_S9_Apache_R1.fastq.gz > 31415_S9_Apache_R1.fastq.gz
+cat Original_29802_S20_Pinal_R2.fastq.gz Original_29802_S77_L002_R2_001.fastq.gz > 29802_S20_Pinal_R2.fastq.gz
+cat Original_29804_S17_Pinal_R2.fastq.gz Original_29804_S76_L002_R2_001.fastq.gz > 29804_S17_Pinal_R2.fastq.gz
+cat Original_29807_S16_Pinal_R2.fastq.gz Original_29807_S75_L002_R2_001.fastq.gz > 29807_S16_Pinal_R2.fastq.gz
+cat Original_29810_S21_Huachuca_R2.fastq.gz Original_29810_S78_L002_R2_001.fastq.gz > 29810_S21_Huachuca_R2.fastq.gz
+cat Original_30946_S1_Coconino_R2.fastq.gz Original_30946_S65_L002_R2_001.fastq.gz > 30946_S1_Coconino_R2.fastq.gz
+cat Original_30948_S14_Pinalenos_R2.fastq.gz Original_30948_S74_L002_R2_001.fastq.gz > 30948_S14_Pinalenos_R2.fastq.gz
+cat Original_30951_S2_Coconino_R2.fastq.gz Original_30951_S66_L002_R2_001.fastq.gz > 30951_S2_Coconino_R2.fastq.gz
+cat Original_30952_S26_Coconino_R2.fastq.gz Original_30952_S83_L002_R2_001.fastq.gz > 30952_S26_Coconino_R2.fastq.gz
+cat Original_30957_S23_SantaRita_R2.fastq.gz Original_30957_S80_L002_R2_001.fastq.gz > 30957_S23_SantaRita_R2.fastq.gz
+cat Original_30958_S24_SantaRita_R2.fastq.gz Original_30958_S81_L002_R2_001.fastq.gz > 30958_S24_SantaRita_R2.fastq.gz
+cat Original_31308_S25_SantaRita_R2.fastq.gz Original_31308_S82_L002_R2_001.fastq.gz > 31308_S25_SantaRita_R2.fastq.gz
+cat Original_31310_S22_Prescott_R2.fastq.gz Original_31310_S79_L002_R2_001.fastq.gz > 31310_S22_Prescott_R2.fastq.gz
+cat Original_31311_S3_Apache_R2.fastq.gz Original_31311_S67_L002_R2_001.fastq.gz > 31311_S3_Apache_R2.fastq.gz
+cat Original_31313_S4_Chiricahua_R2.fastq.gz Original_31313_S68_L002_R2_001.fastq.gz > 31313_S4_Chiricahua_R2.fastq.gz
+cat Original_31315_S5_Apache_R2.fastq.gz Original_31315_S69_L002_R2_001.fastq.gz > 31315_S5_Apache_R2.fastq.gz
+cat Original_31316_S6_SantaCatalina_R2.fastq.gz Original_31316_S70_L002_R2_001.fastq.gz > 31316_S6_SantaCatalina_R2.fastq.gz
+cat Original_31406_S71_L002_R2_001.fastq.gz Original_31406_S7_SantaCatalina_R2.fastq.gz > 31406_S7_SantaCatalina_R2.fastq.gz
+cat Original_31410_S72_L002_R2_001.fastq.gz Original_31410_S8_Chiricahua_R2.fastq.gz > 31410_S8_Chiricahua_R2.fastq.gz
+cat Original_31415_S73_L002_R2_001.fastq.gz Original_31415_S9_Apache_R2.fastq.gz > 31415_S9_Apache_R2.fastq.gz
 
-
-
-
-
+#Now move all the concatenated files back to where you're going to work with them. 
+for I in $(ls | grep -v "Original"); do mv ${I} ../${I}; done
 
 
 
