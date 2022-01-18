@@ -23,12 +23,42 @@ mkdir 13_convert_scripts
 
 cp /wherever_the_files_are/*.gz /lustre/scratch/arrice/WBNU_project_round2/00_fastq
 
-#I use the cp command and not mv because I don't want to delete the files from their original locations. 
-#Also, this might take a few minutes because these are very big files. 
-#You can check filezilla or open another terminal window to see the files being copied. 
+# I use the cp command and not mv because I don't want to delete the files from their original locations. 
+# This might take a few minutes because these are very big files. 
+# You can check filezilla or open another terminal window to see the files being copied. 
+# Since some of these sequences had poor coverage, a few were resequenced. Copy those into the same directory.
 
-#
+cp /wherever_the_redos_are/*.gz /lustre/scratch/arrice/WBNU_project_round2/00_fastq
 
+#Now create a new directory within the 00_fastq folder and move stuff there. 
+#I'm sure there's a shorter, easier way of doing this, but I'm not. 
+
+mkdir Concatenate
+mv 29802* Concatenate/
+mv 29804* Concatenate/
+mv 29807* Concatenate/
+mv 29810* Concatenate/
+mv 30946* Concatenate/
+mv 30948* Concatenate/
+mv 30951* Concatenate/
+mv 30952* Concatenate/
+mv 30957* Concatenate/
+mv 30958* Concatenate/
+mv 31308* Concatenate/
+mv 31310* Concatenate/
+mv 31311* Concatenate/
+mv 31313* Concatenate/
+mv 31315* Concatenate/
+mv 31316* Concatenate/
+mv 31406* Concatenate/
+mv 31410* Concatenate/
+mv 31415* Concatenate/
+cd Concatenate
+
+#Now put a prefix in all files in this folder so you know they're the originals. 
+ for I in $(ls); do mv ${I} Original_${I};done
+ 
+#Now you will concatenate files, one at a time
 
 
 
