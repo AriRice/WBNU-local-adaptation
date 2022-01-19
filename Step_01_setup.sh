@@ -12,12 +12,19 @@ mkdir 01_cleaned
 mkdir 01_bam_files
 mkdir 02_vcf
 mkdir 03_vcf
-mkdir 04_filtered_vcf_100kbp
-mkdir 05_filtered_vcf_50kbp
-mkdir 06_related_files
 mkdir 10_align_script
-mkdir 12_filter_scripts
-mkdir 13_convert_scripts
+mkdir 12_filter
+mkdir 13_ds1_admix50kbp
+mkdir 14_ds2_admix100kbp
+mkdir 15_ds3_trees50kbp
+mkdir 15_ds3_trees50kbp/windows
+mkdir 16_ds4_trees100kbp
+mkdir 16_ds4_trees100kbp/windows
+mkdir 17_ds5_lostruct
+mkdir 18_ds6_stats50kbp
+mkdir 18_ds6_stats50kbp/windows
+mkdir 19_ds7_stats100kbp
+mkdir 19_ds7_stats100kbp/windows
 
 # Now transfer your raw data files for this project to the directory 00_fastq
 
@@ -98,62 +105,16 @@ cat Original_31406_S71_L002_R2_001.fastq.gz Original_31406_S7_SantaCatalina_R2.f
 cat Original_31410_S72_L002_R2_001.fastq.gz Original_31410_S8_Chiricahua_R2.fastq.gz > 31410_S8_Chiricahua_R2.fastq.gz
 cat Original_31415_S73_L002_R2_001.fastq.gz Original_31415_S9_Apache_R2.fastq.gz > 31415_S9_Apache_R2.fastq.gz
 
-#Now move all the concatenated files back to where you're going to work with them. 
+# Now move all the concatenated files back to where you're going to work with them. 
 for I in $(ls | grep -v "Original"); do mv ${I} ../${I}; done
 
+# Now you'll tweak the names a bit. Just to remove useless information. 
+# Create a rename_samples.txt and run the following command:
 
-
-*Up to here*
-
-
-#####################################
-#####################################
-#####################################
-##### make a file map in the style (and same name) of the file "rename_samples.txt" for your samples
-##### and put it in your 00_fastq directory
-#####################################
-#####################################
-#####################################
-
-#####################################
-#####################################
-#####################################
-##### make a sample name file in the style (and same name) of the file "camp_popmap.txt" for your samples
-##### and put it in the main working directory
-##### This file is essentially just the names of the samples in your study.
-##### Make sure the names and numbers are in the same order as the file map you just created.
-##### The names in the first column should be in the format "C-###"
-##### If the sample number is less than 3 digits, add the appropriate number of preceding zeros to make it three digits.
-#####################################
-#####################################
-#####################################
-
-#####################################
-#####################################
-#####################################
-##### make a mtDNA name conversion file in the style (and same name) of the file "camp_mtdna_name.txt" for your samples
-##### and put it in the 01_mtDNA directory
-##### Make sure the names and numbers are in the same order as the file map you created.
-##### The names in the first column should be in the format "C-###__mtDNA.fastq.gz"
-#####################################
-#####################################
-#####################################
-
-# move to the fastq directory
-cd /lustre/scratch/jmanthey/04_relatedness_test/00_fastq/
-
-# rename the files in a numbered fashion
-while read -r name1 name2; do
-	mv $name1 $name2
+while read -r name1 name2; do mv $name1 $name2
 done < rename_samples.txt
 
-# move to your main working directory and copy the genome index file there 
-cd /lustre/scratch/jmanthey/04_relatedness_test/
-cp /home/jmanthey/denovo_genomes/camp_sp_genome_filtered.fasta.fai .
+# Move back to your main directory. 
+# make a basenames.txt file and put it there. 
 
-
-
-
-
-
-
+# Copy the reference genome into someplace safe. Like your home directory. 
