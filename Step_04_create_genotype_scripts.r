@@ -219,3 +219,9 @@ project_directory <- "/lustre/scratch/arrice/WBNU_project_round2"
 	#gatk 4.0
 	gatk_command <- paste0('singularity exec $SINGULARITY_CACHEDIR/', name_of_gatk_singularity_image, ' gatk --java-options "-Xmx', total_mem3, 'g" GenotypeGVCFs --genomicsdb-shared-posixfs-optimizations -R ', reference_genome_location, " -V gendb://", project_directory, "/02_vcf/", "${chr_array}", " --include-non-variant-sites -O ", project_directory, "/03_vcf/", "${name_array}", ".g.vcf", " -L ", "${interval_array}")
 	write(gatk_command, file=a.script, append=T)
+
+# Now exit out of R
+q()
+# Check to see that the scripts and helper files are all there. 
+# Edit the step1, step2, and step3_array scripts so that it emails you when it begins and finishes. 
+
