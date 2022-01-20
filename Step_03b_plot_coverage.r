@@ -1,3 +1,7 @@
+# Just type R to load R in terminal. 
+R
+#Once R is open, type the following: 
+
 x_files <- list.files(pattern="*txt")
 sample_names <- substr(x_files, 1, nchar(x_files)-10)
 
@@ -25,7 +29,6 @@ for(a in 1:length(x_files)) {
 
 rm(a_rep)
 save.image("sitta_coverage.RData")
-
 
 
 
