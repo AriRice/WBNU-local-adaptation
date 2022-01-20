@@ -1,8 +1,11 @@
-# Just type R to load R in terminal. 
+# Make a new directory. Call it 01b_coverage
+# Move the *depth.txt files and the sitta_coverage.txt file into it. 
+
+# Type R to load R in terminal. 
 R
 #Once R is open, type the following: 
 
-x_files <- list.files(pattern="*txt")
+x_files <- list.files(pattern="*depth.txt")
 sample_names <- substr(x_files, 1, nchar(x_files)-10)
 
 coverage_max_to_check <- 50
