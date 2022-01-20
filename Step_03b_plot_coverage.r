@@ -1,9 +1,8 @@
 # Make a new directory. Call it 01b_coverage
 # Move the *depth.txt files and the sitta_coverage.txt file into it. 
 
-# Type R to load R in terminal. 
-R
-#Once R is open, type the following: 
+# Now you can either go into that directory and run this on R within the Cluster (which does not seem to work)...
+# ...Or you can move all of those files to a hard drive, open R studio, set the hard drive folder to your working directory, and go to town. 
 
 x_files <- list.files(pattern="*depth.txt")
 sample_names <- substr(x_files, 1, nchar(x_files)-10)
