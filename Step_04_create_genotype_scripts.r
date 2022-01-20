@@ -223,5 +223,5 @@ project_directory <- "/lustre/scratch/arrice/WBNU_project_round2"
 # Now exit out of R
 q()
 # Check to see that the scripts and helper files are all there. 
-# Edit the step1, step2, and step3_array scripts so that it emails you when it begins and finishes. 
+# Edit the step1, step2, and step3_array scripts so that they email you when they begin and finish. 
 
