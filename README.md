@@ -7,7 +7,7 @@ Step_02_align.sh -> This filters, trims, and aligns data to reference genome. Re
 
 Step_02b_extract_filtering_info.sh -> Does exactly what it says. Run this interactively. Takes ~5 seconds. 
 
-Step_03a_coverage.sh -> uses samtools to measure alignment coverage from bam files. Requires a popmap.txt file in the 01_bam_files folder. Make that before you run this as a submission script. 
+Step_03a_coverage.sh -> uses samtools to measure alignment coverage from bam files. Requires a popmap.txt file in the 01_bam_files folder. Make that before you run this as a submission script. Takes 3.5 hours. 
 
 
 
