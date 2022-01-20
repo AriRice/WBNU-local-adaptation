@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --chdir=./
+#SBATCH --chdir=./01_bam_files
 #SBATCH --job-name=ca_depth
 #SBATCH --partition quanah
 #SBATCH --nodes=1 --ntasks=3
