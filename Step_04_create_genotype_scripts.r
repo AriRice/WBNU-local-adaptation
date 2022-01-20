@@ -9,7 +9,7 @@ project_directory <- "/lustre/scratch/arrice/WBNU_project_round2"
 	reference_genome_location <- "/home/arrice/WBNU_refgenome/New_one/wbnu.fasta"
 	cluster <- "quanah"
 	output_name <- "sitta_genotype"
-	popmap <- "popmap.txt"
+	popmap <- "/lustre/scratch/arrice/WBNU_project_round2/01_bam_files/popmap.txt"
 	individuals <- read.table(popmap, sep="\t")
 	faidx <- read.table("/home/arrice/WBNU_refgenome/New_one/wbnu.fasta.fai", stringsAsFactors=F)
 	singularity_cache <- "/lustre/work/arrice/singularity-cachedir"
