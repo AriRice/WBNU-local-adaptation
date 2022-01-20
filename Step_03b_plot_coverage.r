@@ -24,17 +24,17 @@ for(a in 1:length(x_files)) {
 }
 
 rm(a_rep)
-save.image("certhia2_coverage.RData")
+save.image("sitta_coverage.RData")
 
 
 
 
 
-load("certhia2_coverage.RData")
+load("sitta_coverage.RData")
 
 par(mfrow=c(4,6))
 for(a in 1:length(output2)) {
-	plot(0:51, output2[[a]], pch=19, cex=0.1, xlab="Coverage", ylab="Proportion C. americana genome", main=sample_names[a], ylim=c(0,0.14))
+	plot(0:51, output2[[a]], pch=19, cex=0.1, xlab="Coverage", ylab="Proportion S. carolinensis genome", main=sample_names[a], ylim=c(0,0.14))
 	poly.plot <- rbind(cbind(0:51, output2[[a]]), c(51, 0), c(0,0))
 	polygon(poly.plot, col="gray")
 	abline(v=mean_coverage[a], col="red")
