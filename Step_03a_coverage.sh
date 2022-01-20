@@ -8,6 +8,9 @@
 #SBATCH --mail-user=arrice@ttu.edu
 #SBATCH --mail-type=ALL
 
+. ~/conda/etc/profile.d/conda.sh
+conda activate samtools
+
 samtools depth -a KU29800_Prescott_final.bam KU29801_Prescott_final.bam KU29802_Pinal_final.bam KU29804_Pinal_final.bam \
 KU29807_Pinal_final.bam KU29810_Huachuca_final.bam KU29813_Huachuca_final.bam KU29814_Huachuca_final.bam \
 KU30946_Coconino_final.bam KU30948_Pinalenos_final.bam KU30950_Pinalenos_final.bam KU30951_Coconino_final.bam \
