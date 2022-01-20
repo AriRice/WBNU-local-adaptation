@@ -5,7 +5,7 @@ R
 options(scipen=999)
 
 project_directory <- "/lustre/scratch/arrice/WBNU_project_round2"
-	directory_name <- "11_genotype scripts"
+	directory_name <- "11_genotype_scripts"
 	reference_genome_location <- "/home/arrice/WBNU_refgenome/New_one/wbnu.fasta"
 	cluster <- "quanah"
 	output_name <- "sitta_genotype"
