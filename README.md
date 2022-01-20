@@ -14,8 +14,11 @@ Step_03a_coverage.sh -> uses samtools to measure alignment coverage from bam fil
 
 
 Step_03b_plot_coverage.r -> Uses R to plot the output from 03a_coverage.sh
+###### Haven't done this yet ##############
 
-Step_04_create_genotype_scripts.r -> Uses R script that makes slurm array scripts and helper text files for genotyping in GATK. Requires popmap.txt and ???????????.fasta.fai files for job creation
+
+Step_04_create_genotype_scripts.r -> Uses R script that makes *THREE* slurm array scripts and a bunch of helper text files for genotyping in GATK. Requires popmap.txt and wbnu.fasta.fai files for job creation. Once the scripts have been made, run them one a time. 
+
 
 
 
