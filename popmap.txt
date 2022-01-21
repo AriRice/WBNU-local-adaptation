@@ -23,5 +23,5 @@ KU31316_SantaCatalina   22
 KU31406_SantaCatalina   23
 KU31410_Chiricahua	24
 KU31415_Apache  25
-KU314210_Chiricahua     26
+KU31421_Chiricahua     26
 KU31426_SantaCatalina   27
