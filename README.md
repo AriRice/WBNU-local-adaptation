@@ -21,4 +21,4 @@ Step_04_create_genotype_scripts.r -> Uses R script that makes *THREE* slurm arra
 
 Step_05a_concatenate_vcf_files.sh --> Go into the 03_vcf directory and make this script to combine all vcfs from the same chromosome into single vcf files. But before running it, make a vcf_cat.txt file and ONLY include scaffolds that have more than one .vcf and .vcf.indx file. If you try to concatenate .vcf files that dont require it, you will overwrite them. Takes 5 minutes. 
 
-Step_05b_concatenate_vcf_files.sh --> Just copy and paste these two lines to concatenate those big chromosomes. 
+Step_05b_concatenate_vcf_files.sh --> Just copy and paste these two lines to concatenate those big chromosomes. Should take a few minutes.
