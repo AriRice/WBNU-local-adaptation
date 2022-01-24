@@ -19,6 +19,12 @@ Step_03b_plot_coverage.r -> Uses R to plot the output from 03a_coverage.sh
 
 Step_04_create_genotype_scripts.r -> Uses R script that makes *THREE* slurm array scripts and a bunch of helper text files for genotyping in GATK. Requires popmap.txt and wbnu.fasta.fai files for job creation. Once the scripts have been made, run them one a time. 
 
+The first one takes a while. 
+
+Second one takes 2 hours, 15 minutes
+
+The third one takes 6 hours, 10 minutes
+
 
 
 
