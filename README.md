@@ -17,15 +17,7 @@ Step_03b_plot_coverage.r -> Uses R to plot the output from 03a_coverage.sh
 ###### Haven't done this yet ##############
 
 
-Step_04_create_genotype_scripts.r -> Uses R script that makes *THREE* slurm array scripts and a bunch of helper text files for genotyping in GATK. Requires popmap.txt and wbnu.fasta.fai files for job creation. Once the scripts have been made, run them one a time. 
+Step_04_create_genotype_scripts.r -> Uses R script that makes *THREE* slurm array scripts and a bunch of helper text files for genotyping in GATK. Requires popmap.txt and wbnu.fasta.fai files for job creation. Once the scripts have been made, run them one a time. The first one takes several hours. Second one takes 2 hours, 15 minutes. Third one takes 6 hours, 10 minutes.
 
-The first one takes a while. 
-
-Second one takes 2 hours, 15 minutes
-
-The third one takes 6 hours, 10 minutes
-
-
-
-
+Step_05_concatenate_vcf_files.sh --> Make this script to concatenate files by chromosome/ scaffold #. But before running it, make a vcf_cat.txt file and ONLY include scaffolds that have more than one .vcf and .vcf.indx file. If you try to concatenate .vcf files that dont need to be concatenated, you will accidentally overwrite them. 
 
