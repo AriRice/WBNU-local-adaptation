@@ -23,9 +23,30 @@ refgenome=/home/arrice/WBNU_refgenome/New_one/wbnu.fasta
 
 # run bbduk
 /lustre/work/jmanthey/bbmap/bbduk.sh in1=${workdir}/00_fastq/${basename_array}_R1.fastq.gz in2=${workdir}/00_fastq/${basename_array}_R2.fastq.gz out1=${workdir}/01_cleaned/${basename_array}_R1.fastq.gz out2=${workdir}/01_cleaned/${basename_array}_R2.fastq.gz minlen=50 ftl=10 qtrim=rl trimq=10 ktrim=r k=25 mink=7 ref=/lustre/work/jmanthey/bbmap/resources/adapters.fa hdist=1 tbo tpe
+# "DUK" stands for decontamination using kmers. It combines a bunch of tools for quality trimming, adapter trimming, filtering, etc. 
+# "in1" and "in2"= Input files. "out1" and "out2"= Output files. 
+# "minlen=50" throws out reads shorter than 50 bp. 
+# "ftl=10" trims the leftmost 10 bases. 
+# "qtrim=rl" Quality-trims the right and left side of the reads. 
+# "trimq=10" Quality-trims reads with Phred scores under 10. 
+# "ktrim=r" Trims out reference kmers and all bases to the right of it after it's matched to a read. This is the normal mode for adapter trimming.
+# "k=25" Something to do with kmers. 
+# "mink=7" Looks for kmers between 7 and 25 base pairs. 
+# "ref=/lustre/work/jmanthey/bbmap/resources/adapters.fa" The reference file that has all the adapter kmers that you're filtering out. 
+# "hdist=1" Hamming distance! (whatever that means)
+# "tbo" Not sure what this does.  
+# "tpe" Trims both reads to the same length in case a kmer was only detected in one of them. 
 
 # run bwa mem
 bwa mem -t 12 ${refgenome} ${workdir}/01_cleaned/${basename_array}_R1.fastq.gz ${workdir}/01_cleaned/${basename_array}_R2.fastq.gz > ${workdir}/01_bam_files/${basename_array}.sam
+# This maps sequences to the reference genome. 
+
+
+
+
+# NOT DONE YET!!!!!!!!!!!!!!!!
+
+
 
 # convert sam to bam
 samtools view -b -S -o ${workdir}/01_bam_files/${basename_array}.bam ${workdir}/01_bam_files/${basename_array}.sam
