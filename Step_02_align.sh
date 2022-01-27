@@ -40,22 +40,22 @@ refgenome=/home/arrice/WBNU_refgenome/New_one/wbnu.fasta
 # run bwa mem
 bwa mem -t 12 ${refgenome} ${workdir}/01_cleaned/${basename_array}_R1.fastq.gz ${workdir}/01_cleaned/${basename_array}_R2.fastq.gz > ${workdir}/01_bam_files/${basename_array}.sam
 # This maps sequences to the reference genome. 
-
-
-
-
-# NOT DONE YET!!!!!!!!!!!!!!!!
-
-
+# -t denotes number of threads. 
+# Creates a .sam file. 
 
 # convert sam to bam
 samtools view -b -S -o ${workdir}/01_bam_files/${basename_array}.bam ${workdir}/01_bam_files/${basename_array}.sam
+# Sam files are massive text files depicting alignments. Bam files are their binary equivalent, and they take up significantly less space. 
 
 # remove sam
 rm ${workdir}/01_bam_files/${basename_array}.sam
 
 # clean up the bam file
 singularity exec $SINGULARITY_CACHEDIR/gatk_4.2.3.0.sif gatk CleanSam -I ${workdir}/01_bam_files/${basename_array}.bam -O ${workdir}/01_bam_files/${basename_array}_cleaned.bam
+
+#######UP TO HERE###############
+
+
 
 # remove the raw bam
 rm ${workdir}/01_bam_files/${basename_array}.bam
