@@ -53,10 +53,6 @@ rm ${workdir}/01_bam_files/${basename_array}.sam
 # clean up the bam file
 singularity exec $SINGULARITY_CACHEDIR/gatk_4.2.3.0.sif gatk CleanSam -I ${workdir}/01_bam_files/${basename_array}.bam -O ${workdir}/01_bam_files/${basename_array}_cleaned.bam
 
-#######UP TO HERE###############
-
-
-
 # remove the raw bam
 rm ${workdir}/01_bam_files/${basename_array}.bam
 
@@ -68,6 +64,10 @@ rm ${workdir}/01_bam_files/${basename_array}_cleaned.bam
 
 # add read groups to sorted and cleaned bam file
 singularity exec $SINGULARITY_CACHEDIR/gatk_4.2.3.0.sif gatk AddOrReplaceReadGroups -I ${workdir}/01_bam_files/${basename_array}_cleaned_sorted.bam -O ${workdir}/01_bam_files/${basename_array}_cleaned_sorted_rg.bam --RGLB 1 --RGPL illumina --RGPU unit1 --RGSM ${basename_array}
+# "--RGLB" stands for Read-Group library. 
+# "--RGPL" stands for Read-Group platform, which is illumina in this case. 
+# "--RGPU" stands for Read-Group platform unit.
+# "--RGSM" stands for Read-Group sample name. 
 
 # remove cleaned and sorted bam file
 rm ${workdir}/01_bam_files/${basename_array}_cleaned_sorted.bam
