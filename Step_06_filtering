@@ -13,8 +13,8 @@ input_array=$( head -n${SLURM_ARRAY_TASK_ID} WHATEVER.txt | tail -n1 )
 
 
 
-
-
+--minDP 6 --max-meanDP 30
+^^^^^I'm using this. Because of the plots. 
 
 
 
@@ -35,7 +35,7 @@ vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --remove-indv C074G --max-
 # "max-missing" excludes SNPs or other variants based on the proportion of missing data. Setting it to 1 means no missing data allowed. 0.5 means that half the samples could have missing data without having that site filtered out. 
 # "minQ" excludes sites with a quality score below said threshold. 
 # "minGQ" excludes genotypes with a quality score below said threshold. 
-# "minDP/maxDP" excludes genotypes above or below a certain read depth. This should be determined based on coverage plots from step 3. 
+# "minDP/maxDP" excludes genotypes above or below a certain read depth. This should be determined based on coverage plots from step 3.  
 # "min-meanDP/max-meanDP" excludes genotypes above or below a certain MEAN read depth. This should be determined based on coverage plots from step 3. 
 # "min-alleles/max-alleles" limits variants to bi- or tri-allelic sites. 
 # "mac" includes sites with minor allele counts (?) greater than or equal to this value. 
