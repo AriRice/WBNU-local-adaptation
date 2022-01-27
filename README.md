@@ -11,8 +11,12 @@ Step_03a_coverage.sh -> uses samtools to measure alignment coverage from bam fil
 
 Step_03b_plot_coverage.r -> Uses R to plot the output from 03a_coverage.sh
 
-Step_04_create_genotype_scripts.r -> Uses R script that makes *THREE* slurm array scripts and a bunch of helper text files for genotyping in GATK. Requires popmap.txt and wbnu.fasta.fai files for job creation. Once the scripts have been made, run them one a time. The first one takes several hours. Second one takes 2.5 hours. Third one takes ~6 hours.
+Step_04_create_genotype_scripts.r -> Uses R script that makes *THREE* slurm array scripts and a bunch of helper text files for genotyping in GATK. Requires popmap.txt and wbnu.fasta.fai files for job creation. Once the scripts have been made, run them one a time. 
 
-Step_05a_concatenate_vcf_files.sh --> Go into the 03_vcf directory and make this script to combine all vcfs from the same chromosome into single vcf files. But before running it, make a vcf_cat.txt file and ONLY include scaffolds that have more than one .vcf and .vcf.indx file. If you try to concatenate .vcf files that dont require it, you will overwrite them. Takes 5 minutes. 
+## The first one uses haplotypecaller to detect SNPs and indels in the alignments between samples and the reference genome. Converts bam files into vcf (variant call format) files and creates a different one for each scaffold/chromosome within each sample. This takes several hours. 
+## The second one uses GenomicsDBImport to merge vcf files from different samples into one big alignment per scaffold/chromosome. Takes 2.5 hours. 
+## The third one uses GenotypeGVCFS to do group genotyping and reassess SNPs and indels based on data across all samples and not just one. Takes ~6 hours.
 
-Step_05b_concatenate_vcf_files.sh --> Just copy and paste these two lines to concatenate those big chromosomes. Should take a few minutes.
+Step_05a_concatenate_vcf_files.sh --> This script combines all vcfs from the same chromosome into single vcf files. But before running it in the 03_vcf directory, make a vcf_cat.txt file and ONLY include scaffolds that have more than one .vcf and .vcf.indx file. If you try to concatenate .vcf files that dont require it, you will overwrite them. Takes 5 minutes. 
+
+Step_05b_concatenate_vcf_files.sh --> Concatenates those big chromosomes. Just copy and paste these two lines. Should take a few minutes.
