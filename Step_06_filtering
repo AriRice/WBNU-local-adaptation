@@ -11,7 +11,7 @@
 input_array=$( head -n${SLURM_ARRAY_TASK_ID} WHATEVER.txt | tail -n1 )
 # WHATEVER can be a helper file or a vcf.list. See other people's scripts. 
 
-# run vcftools with SNP output for GEA tests such as LMME and BayeScEnv
+# run vcftools with SNP output for GEA tests such as LFMM and BayeScEnv
 vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.8 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --mac 1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06_filter_vcf_GEA/${input_array}
 
 # What it does:
