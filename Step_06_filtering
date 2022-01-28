@@ -33,3 +33,5 @@ vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.8 --minQ 2
 # Uncertain:
 # minQ, minGQ, min-alleles, max-alleles, mac, max-maf, remove-indels
 
+# This is very useful: https://speciationgenomics.github.io/filtering_vcfs/ 
+
