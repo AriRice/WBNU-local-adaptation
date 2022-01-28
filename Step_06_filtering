@@ -9,37 +9,27 @@
 
 # define input files from helper file during genotyping
 input_array=$( head -n${SLURM_ARRAY_TASK_ID} WHATEVER.txt | tail -n1 )
+# WHATEVER can be a helper file or a vcf.list. See other people's scripts. 
 
-
-
-
---minDP 6 --max-meanDP 30
-^^^^^I'm using this. Because of the plots. 
-
-
-
-
-
-# Taken from the Campanotus modoch local adaptation script
-
-# run vcftools with SNP output for GEA tests
-vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --remove-indv C074G --max-missing 0.8 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 60 --min-alleles 2 --max-alleles 2 --mac 1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06_filter_vcf_GEA/${input_array}
+# run vcftools with SNP output for GEA tests such as LMME and BayeScEnv
+vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.8 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --mac 1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06_filter_vcf_GEA/${input_array}
 
 # What it does:
-# VCFtools filters out variants that you're not going to look at for downstream analyses. How one filters depends on what those types of analyses will be. 
-
-# In this case, you'll filter for genotype-environment association tests such as LMME and BayesScEnv... 
-# ...and do a separate bout of filtering for looking at Fst? Not sure about that yet. 
-
-
-# "max-missing" excludes SNPs or other variants based on the proportion of missing data. Setting it to 1 means no missing data allowed. 0.5 means that half the samples could have missing data without having that site filtered out. 
-# "minQ" excludes sites with a quality score below said threshold. 
-# "minGQ" excludes genotypes with a quality score below said threshold. 
+# VCFtools filters out variants that you're not going to look at for downstream analyses. How one filters should depend on the downstream analyses. 
+# "max-missing" excludes SNPs or other variants based on the proportion of missing data. Setting it to 1 means no missing data allowed. 0.5 means that half the samples could have missing data without having that site filtered out. It is currently set to 0.8. 
+# "minQ" excludes sites (across all samples?) with a quality score below said threshold. 
+# "minGQ" excludes genotypes (in particular samples?) with a quality score below said threshold. 
 # "minDP/maxDP" excludes genotypes above or below a certain read depth. This should be determined based on coverage plots from step 3.  
 # "min-meanDP/max-meanDP" excludes genotypes above or below a certain MEAN read depth. This should be determined based on coverage plots from step 3. 
-# "min-alleles/max-alleles" limits variants to bi- or tri-allelic sites. 
+# "min-alleles/max-alleles" limits variants to bi- or tri-allelic sites. It is currently set to 2 and 2. Change it?
 # "mac" includes sites with minor allele counts (?) greater than or equal to this value. 
-# "max-maf" includes sites with a minor allele frequency (?) less than or equal to this value. 
-# "remove-indels" self-explanatory. 
+# "max-maf" includes sites with a minor allele frequency (?) less than or equal to this value. It is currently set to 0.49. Change it?
+# "remove-indels" self-explanatory. Change it? 
 # "recode and recode-INFO-all" I don't know. It seems important. Just keep it in there. 
+
+# Parameters I'm certain about:
+# minDP, max-meanDP
+
+# Uncertain:
+# minQ, minGQ, min-alleles, max-alleles, mac, max-maf, remove-indels
 
