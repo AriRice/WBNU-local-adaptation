@@ -12,26 +12,23 @@ input_array=$( head -n${SLURM_ARRAY_TASK_ID} WHATEVER.txt | tail -n1 )
 # WHATEVER can be a helper file or a vcf.list. See other people's scripts. 
 
 # run vcftools with SNP output for GEA tests such as LFMM and BayeScEnv
-vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.8 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --mac 1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06_filter_vcf_GEA/${input_array}
+vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --min-maf 0.1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06_filter_vcf_GEA/${input_array}
+
+# run vcftools with output for Fst. It'll be the same, except that minor allele frequency will have NO minimum.
+vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06_filter_vcf_Fst/${input_array}
 
 # What it does:
 # VCFtools filters out variants that you're not going to look at for downstream analyses. How one filters should depend on the downstream analyses. 
-# "max-missing" excludes SNPs or other variants based on the proportion of missing data. Setting it to 1 means no missing data allowed. 0.5 means that half the samples could have missing data without having that site filtered out. It is currently set to 0.8. 
-# "minQ" excludes sites (across all samples?) with a quality score below said threshold. 
+# "max-missing" excludes SNPs or other variants based on the proportion of missing data. Setting it to 1 means no missing data allowed. 0.5 means that half the samples could have missing data without having that site filtered out. For this set, 0.92 makes the most sense. 
+# "minQ" excludes sites (across all samples?) with a quality score below said threshold.
 # "minGQ" excludes genotypes (in particular samples?) with a quality score below said threshold. 
 # "minDP/maxDP" excludes genotypes above or below a certain read depth. This should be determined based on coverage plots from step 3.  
 # "min-meanDP/max-meanDP" excludes genotypes above or below a certain MEAN read depth. This should be determined based on coverage plots from step 3. 
-# "min-alleles/max-alleles" limits variants to bi- or tri-allelic sites. It is currently set to 2 and 2. Change it?
-# "mac" includes sites with minor allele counts (?) greater than or equal to this value. 
-# "max-maf" includes sites with a minor allele frequency (?) less than or equal to this value. It is currently set to 0.49. Change it?
-# "remove-indels" self-explanatory. Change it? 
+# "min-alleles/max-alleles" limits variants to bi- or tri-allelic sites.
+# "min-maf" includes sites with a minor allele frequency (?) greater than or equal to this value.
+# "max-maf" includes sites with a minor allele frequency (?) less than or equal to this value. It is currently set to 0.49.
+# "remove-indels" self-explanatory. Can be changed if you ever want to look at indels and not just SNPs. 
 # "recode and recode-INFO-all" I don't know. It seems important. Just keep it in there. 
 
-# Parameters I'm certain about:
-# minDP, max-meanDP
-
-# Uncertain:
-# minQ, minGQ, min-alleles, max-alleles, mac, max-maf, remove-indels
 
 # This is very useful: https://speciationgenomics.github.io/filtering_vcfs/ 
-
