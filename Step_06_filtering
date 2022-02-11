@@ -9,6 +9,8 @@
 #SBATCH --mail-user=arrice@ttu.edu
 #SBATCH --mail-type=ALL
 
+module load intel vcftools
+
 # define input files from helper file during genotyping
 input_array=$( head -n${SLURM_ARRAY_TASK_ID} vcf_list.txt | tail -n1 )
 # If this script involved thinning, I wouldn't have done concatenation beforehand and would just used helper6.txt instead of a new vcf_list.txt. 
