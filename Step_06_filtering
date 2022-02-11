@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH --chdir=../
+#SBATCH --chdir=./
 #SBATCH --job-name=filter
 #SBATCH --nodes=1 --ntasks=1
 #SBATCH --partition quanah
@@ -9,15 +9,14 @@
 #SBATCH --mail-user=arrice@ttu.edu
 #SBATCH --mail-type=ALL
 
-. ~/conda/etc/profile.d/conda.sh
-conda activate vcftools
+workdir=/lustre/scratch/arrice/WBNU_project_round2
 
 # define input files from helper file during genotyping
 input_array=$( head -n${SLURM_ARRAY_TASK_ID} vcf_list.txt | tail -n1 )
 # If this script involved thinning, I wouldn't have done concatenation beforehand and would just used helper6.txt instead of a new vcf_list.txt. 
 
 # run vcftools with SNP output for GEA tests such as LFMM and BayeScEnv
-vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --min-maf 0.1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06a_filter_vcf_GEA/${input_array}
+vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --maf 0.1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06a_filter_vcf_GEA/${input_array}
 
 # run vcftools with output for Fst. It'll be the same, except that minor allele frequency will have NO minimum.
 vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06b_filter_vcf_Fst/${input_array}
@@ -30,7 +29,7 @@ vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 
 # "minDP/maxDP" excludes genotypes above or below a certain read depth. This should be determined based on coverage plots from step 3.  
 # "min-meanDP/max-meanDP" excludes genotypes above or below a certain MEAN read depth. This should be determined based on coverage plots from step 3. 
 # "min-alleles/max-alleles" limits variants to bi- or tri-allelic sites.
-# "min-maf" includes sites with a minor allele frequency (?) greater than or equal to this value.
+# "maf" includes sites with a minor allele frequency (?) greater than or equal to this value.
 # "max-maf" includes sites with a minor allele frequency (?) less than or equal to this value. It is currently set to 0.49.
 # "remove-indels" self-explanatory. Can be changed if you ever want to look at indels and not just SNPs. 
 # "recode and recode-INFO-all" I don't know. It seems important. Just keep it in there. 
