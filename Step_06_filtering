@@ -6,6 +6,8 @@
 #SBATCH --time=48:00:00
 #SBATCH --mem-per-cpu=8G
 #SBATCH --array=1-39
+#SBATCH --mail-user=arrice@ttu.edu
+#SBATCH --mail-type=ALL
 
 # define input files from helper file during genotyping
 input_array=$( head -n${SLURM_ARRAY_TASK_ID} vcf_list.txt | tail -n1 )
