@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH --chdir=./
+#SBATCH --chdir=../
 #SBATCH --job-name=filter
 #SBATCH --nodes=1 --ntasks=1
 #SBATCH --partition quanah
