@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH --chdir=../
+#SBATCH --chdir=./
 #SBATCH --job-name=filter
 #SBATCH --nodes=1 --ntasks=1
 #SBATCH --partition quanah
@@ -8,14 +8,14 @@
 #SBATCH --array=1-39
 
 # define input files from helper file during genotyping
-input_array=$( head -n${SLURM_ARRAY_TASK_ID} WHATEVER.txt | tail -n1 )
-# WHATEVER can be a helper file or a vcf.list. See other people's scripts. 
+input_array=$( head -n${SLURM_ARRAY_TASK_ID} vcf_list.txt | tail -n1 )
+# If this script involved thinning, I wouldn't have done concatenation beforehand and would just used helper6.txt instead of a new vcf_list.txt. 
 
 # run vcftools with SNP output for GEA tests such as LFMM and BayeScEnv
-vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --min-maf 0.1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06_filter_vcf_GEA/${input_array}
+vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --min-maf 0.1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06a_filter_vcf_GEA/${input_array}
 
 # run vcftools with output for Fst. It'll be the same, except that minor allele frequency will have NO minimum.
-vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06_filter_vcf_Fst/${input_array}
+vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06b_filter_vcf_Fst/${input_array}
 
 # What it does:
 # VCFtools filters out variants that you're not going to look at for downstream analyses. How one filters should depend on the downstream analyses. 
