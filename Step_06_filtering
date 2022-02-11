@@ -9,7 +9,8 @@
 #SBATCH --mail-user=arrice@ttu.edu
 #SBATCH --mail-type=ALL
 
-module load intel vcftools
+. ~/conda/etc/profile.d/conda.sh
+conda activate vcftools
 
 # define input files from helper file during genotyping
 input_array=$( head -n${SLURM_ARRAY_TASK_ID} vcf_list.txt | tail -n1 )
