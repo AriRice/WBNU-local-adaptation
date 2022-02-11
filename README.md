@@ -18,3 +18,5 @@ The first one uses haplotypecaller to detect SNPs and indels in the alignments b
 Step_05a_concatenate_vcf_files.sh --> This script combines all vcfs from the same chromosome into single vcf files. But before running it in the 03_vcf directory, make a vcf_cat.txt file and ONLY include scaffolds that have more than one .vcf and .vcf.indx file. If you try to concatenate .vcf files that dont require it, you will overwrite them. Takes 5 minutes. 
 
 Step_05b_concatenate_vcf_files.sh --> Concatenates those big chromosomes. Just copy and paste these two lines. Should take a few minutes.
+
+Step_06_filter.sh --> Filter the data into one or more datasets (depending on the type of downstream analyses that will be used). Before running, make sure to create a vcf_list.txt file as well as new folders for each outputted dataset. 
