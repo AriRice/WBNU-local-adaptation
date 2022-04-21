@@ -18,8 +18,8 @@ input_array=$( head -n${SLURM_ARRAY_TASK_ID} vcf_list.txt | tail -n1 )
 # run vcftools with SNP output for GEA tests such as LFMM and BayeScEnv
 vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --maf 0.12 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06a_filter_vcf_GEA/${input_array}
 
-# run vcftools with output for Fst. It'll be the same, except that minor allele frequency will have NO minimum.
-vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.92 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06b_filter_vcf_Fst/${input_array}
+# run vcftools with output for Fst. It'll be the same, except that minor allele frequency will have NO minimum. And max-missing is more lenient. 
+vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.5 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 30 --min-alleles 2 --max-alleles 2 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/06b_filter_vcf_Fst/${input_array}
 
 # What it does:
 # VCFtools filters out variants that you're not going to look at for downstream analyses. How one filters should depend on the downstream analyses. 
