@@ -11,6 +11,9 @@ options(scipen=999)
 	# filtered to only include genotyped chromosomes
 	ref_index <- read.table("~/WBNU_refgenome/New_one/wbnu.fasta.fai", stringsAsFactors=F)
   
+  # define window size
+	window_size <- 100000
+  
   	# make directories
 	dir.create(directory_name)
 	
