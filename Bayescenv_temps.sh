@@ -8,7 +8,7 @@
 #SBATCH --mail-user=arrice@ttu.edu
 #SBATCH --mail-type=ALL
 
-workdir=/lustre/work/arrice/bayescenv-1.1/test
+workdir=/lustre/scratch/arrice/WBNU_project_round2/13_Bayescenv 
 
 ./bayescenv test_bayescenv.txt -env scaled_temps.txt -o WBNU_temps -nbp 20 -pilot 5000 -thin 10 -n 5000 -burn 50000
 
@@ -24,4 +24,4 @@ workdir=/lustre/work/arrice/bayescenv-1.1/test
 
 # Other things you can change:
 # -pr_jump 0.1  	Prior probability for non neutral models, default is 0.1
-# -pr_pref 0.5	Prior preference for the locus-specific model, default is 0.5.
+# -pr_pref 0.5	Prior preference for the locus-specific model, default is 0.5
