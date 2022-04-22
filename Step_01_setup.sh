@@ -14,17 +14,6 @@ mkdir 02_vcf
 mkdir 03_vcf
 mkdir 10_align_script
 mkdir 12_filter
-mkdir 13_ds1_admix50kbp
-mkdir 14_ds2_admix100kbp
-mkdir 15_ds3_trees50kbp
-mkdir 15_ds3_trees50kbp/windows
-mkdir 16_ds4_trees100kbp
-mkdir 16_ds4_trees100kbp/windows
-mkdir 17_ds5_lostruct
-mkdir 18_ds6_stats50kbp
-mkdir 18_ds6_stats50kbp/windows
-mkdir 19_ds7_stats100kbp
-mkdir 19_ds7_stats100kbp/windows
 
 # Now transfer your raw data files for this project to the directory 00_fastq
 
