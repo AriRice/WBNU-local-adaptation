@@ -23,6 +23,8 @@ Step_06_filter.sh --> Filter the data into one or more datasets (depending on th
 
 Step_07_squish_em_together.sh --> Concatenating vcfs into one file, for GEA analyses in R. 
 
-Step_08_filtering_windows.sh <- another filtering scheme for a downstream analysis that'll measure Fst across 10kbp sliding windows. 
+Step_08_filtering_windows.sh <- another filtering scheme for a downstream analysis that'll measure Fst across 10kbp sliding windows. Create it in the 12_filter folder. 
 
-Step_09_Create_100kbp_array_script.r <-- creates script that divides everything into 10kbp windows and calculates Fst. After doing this in an interactive session, create 
+Step_09_Create_100kbp_array_script.r <-- Creates a script (and several helper files) that divides everything into 10kbp windows and calculates Fst. Do this in an interactive session within the 04_stats directory. Then, to run said script, you must create 'window_stat_calculations.r', 'calculate_windows.r', and 'popmap_phylo.txt' in this directory. 
+
+Step_10_combine_stats.sh <-- Does the same thing as step 07. Concatenating. 
