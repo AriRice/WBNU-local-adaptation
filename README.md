@@ -20,3 +20,6 @@ Step_05a_concatenate_vcf_files.sh --> This script combines all vcfs from the sam
 Step_05b_concatenate_vcf_files.sh --> Concatenates those big chromosomes. Just copy and paste these two lines. Should take a few minutes.
 
 Step_06_filter.sh --> Filter the data into one or more datasets (depending on the type of downstream analyses that will be used). Before running, make sure to create a vcf_list.txt file as well as new folders for each outputted dataset. 
+
+Step_07_squish_em_together.sh --> Concatenating vcfs into one file, for GEA analyses in R. 
+
