@@ -25,4 +25,4 @@ Step_07_squish_em_together.sh --> Concatenating vcfs into one file, for GEA anal
 
 Step_08_filtering_windows.sh <- another filtering scheme for a downstream analysis that'll measure Fst across 10kbp sliding windows. 
 
-Step_09
+Step_09_Create_100kbp_array_script.r <-- creates script that divides everything into 10kbp windows and calculates Fst. After doing this in an interactive session, create 
