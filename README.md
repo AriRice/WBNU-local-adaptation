@@ -23,3 +23,6 @@ Step_06_filter.sh --> Filter the data into one or more datasets (depending on th
 
 Step_07_squish_em_together.sh --> Concatenating vcfs into one file, for GEA analyses in R. 
 
+Step_08_filtering_windows.sh <- another filtering scheme for a downstream analysis that'll measure Fst across 10kbp sliding windows. 
+
+Step_09
