@@ -1,0 +1,17 @@
+Import the RADseq data into a new directory (14_RADSeq_data)
+Rename the fastq files using a rename script and a txt file just like before...
+zip them up...
+
+Create another basenames file in your main working directory...
+
+Make a new directory (15_STACKS)
+
+Run a Process_Radtags script in that directory, using a STACKS conda environment. 
+
+Make a directory within it called "trimmed"
+
+Run bbduk in a way that trims the 4 leftmost bp of each file and puts them in "trimmed". 
+
+Rename everything in trimmed so it's less confusing. 
+
+Now it's time to ALIGN!!!!!!
